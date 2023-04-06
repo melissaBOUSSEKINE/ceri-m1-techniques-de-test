@@ -1,0 +1,24 @@
+# Utilisation de l'image CircleCI avec Maven et OpenJDK
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/maven:3.8.4-openjdk-8
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: mvn dependency:go-offline
+      - run:
+          name: Run unit tests
+          command: mvn test
+    # Exécution uniquement sur la branche master
+    filters:
+      branches:
+        only:
+          - master
+    # Exécution sur Java 8 ou supérieur
+    environment:
+      _JAVA_OPTIONS: "-XX:MaxRAMPercentage=75.0"
+      JAVA_HOME: C:\Program Files\Java\jdk1.8.0_202
