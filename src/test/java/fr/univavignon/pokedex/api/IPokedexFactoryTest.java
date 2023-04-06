@@ -13,11 +13,6 @@ public class IPokedexFactoryTest {
     IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
 
     @Test
-
-
-
-
-
     public  void creationPokedex() {
         when(pokedexFactory.createPokedex(any(), any())).thenAnswer(new Answer<IPokedex>() {
             public IPokedex answer(InvocationOnMock invocation) {

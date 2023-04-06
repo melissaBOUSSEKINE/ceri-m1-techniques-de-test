@@ -42,7 +42,7 @@ public class IPokedexTest {
     }
 
     @Test
-    public  void addPokemon() { //ce test ne marche pas
+    public  void addPokemon() {
         when(pokedex.addPokemon(any())).thenAnswer(new Answer<Integer>() {
 
             @Override
