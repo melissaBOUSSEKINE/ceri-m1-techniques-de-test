@@ -1,7 +1,12 @@
-version: 2
-orbs:
-  codecov: codecov/codecov@1.0.4
-jobs:
+  version: '2.1'
+  orbs:
+    codecov: codecov/codecov@3.2.3
+  workflows:
+    upload-to-codecov:
+      jobs:
+        - checkout
+        - codecov/upload
+  jobs:
   build-and-test:
     docker:
       - image: circleci/openjdk:8-jdk
