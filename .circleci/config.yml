@@ -1,12 +1,8 @@
-  version: '2.1'
-  orbs:
-    codecov: codecov/codecov@3.2.3
-  workflows:
-    upload-to-codecov:
-      jobs:
-        - checkout
-        - codecov/upload
-  jobs:
+version: '2.1'
+orbs:
+  codecov: codecov/codecov@3.2.3
+
+jobs:
   build-and-test:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -22,11 +18,12 @@
           name: Test and Upload coverage to Codecov
           command: |
             mvn test
-            bash <(curl -s https://codecov.io/bash)
+            bash <(curl -s https://codecov.io/bash) -t 9efcc84c-0c68-4ac8-a2e1-9a0b6535c97e
+      - codecov/upload
     machine:
       java:
         version: 'oraclejdk8'
-  # Ajouter d'autres jobs si nécessaire
+# Ajouter d'autres jobs si nécessaire
 workflows:
   version: 2
   build-and-test:
