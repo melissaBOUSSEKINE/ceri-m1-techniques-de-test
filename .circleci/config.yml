@@ -17,6 +17,8 @@ jobs:
       - run:
           name: Upload coverage to Codecov
           command: bash <(curl -s https://codecov.io/bash)
+      - run: mvn clean test
+      - codecov/upload
 
     machine:
       java:
